@@ -27,9 +27,9 @@ class BookAPI extends RESTDataSource {
     //Change url from spaces to %20
     const removeSpacesTerm = searchTerm.replace(/ /g, "%20");
 
-    const respone = await this.get(`volumes?q=+inauthor:${removeSpacesTerm}`);
+    const response = await this.get(`volumes?q=+inauthor:${removeSpacesTerm}`);
     return Array.isArray(response.items)
-      ? respone.map((book) => this.bookReducer(book))
+      ? response.items.map((book) => this.bookReducer(book))
       : [];
   }
 
