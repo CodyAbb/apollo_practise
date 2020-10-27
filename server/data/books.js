@@ -35,29 +35,30 @@ class BookAPI extends RESTDataSource {
 
   bookReducer(book) {
     let publishedYear = parseInt(book.volumeInfo.publishedDate.slice(0, 4));
-    let isbn;
+    let isbn13;
 
     if (book.volumeInfo.industryIdentifiers) {
       for (let identityData of book.volumeInfo.industryIdentifiers) {
-        console.log(identityData);
         if (identityData.type === "ISBN_13") {
-          isbn = parseInt(identityData.identifier);
-        } else isbn = undefined;
+          isbn13 = parseInt(identityData.identifier);
+        } else isbn13 = undefined;
       }
 
-      // isbn = parseInt(book.volumeInfo.industryIdentifiers[0].identifier);
+      // isbn13 = parseInt(book.volumeInfo.industryIdentifiers[0].identifier);
     } else {
-      isbn = undefined;
+      isbn13 = undefined;
     }
 
     return {
       id: book.id,
       title: book.volumeInfo.title,
       authors: book.volumeInfo.authors,
-      description: book.volumeInfo.description,
+      publisher: book.volumeInfo.publisher,
       pages: book.volumeInfo.pageCount,
       yearPublished: publishedYear,
-      ISBN: isbn,
+      ISBN13: isbn13,
+      imageThumbnailLink: book.volumeInfo.imageLinks.thumbnail,
+      description: book.volumeInfo.description,
     };
   }
 }

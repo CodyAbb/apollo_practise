@@ -5,10 +5,12 @@ const typeDefs = gql`
     id: ID!
     title: String!
     authors: [String]
-    description: String
+    publisher: String
     pages: Int
     yearPublished: Int
-    ISBN: String
+    ISBN13: String
+    imageThumbnailLink: String
+    description: String
   }
 
   type Author {
