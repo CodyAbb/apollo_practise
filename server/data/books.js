@@ -52,6 +52,7 @@ class BookAPI extends RESTDataSource {
     return {
       id: book.id,
       title: book.volumeInfo.title,
+      subtitle: book.volumeInfo.subtitle,
       authors: book.volumeInfo.authors,
       publisher: book.volumeInfo.publisher,
       pages: book.volumeInfo.pageCount,
