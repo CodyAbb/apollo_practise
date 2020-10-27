@@ -4,10 +4,11 @@ const typeDefs = gql`
   type Book {
     id: ID!
     title: String!
-    authors: [Author]
+    authors: [String]
+    description: String
     pages: Int
     yearPublished: Int
-    ISBN: Int
+    ISBN: String
   }
 
   type Author {
@@ -30,8 +31,10 @@ const typeDefs = gql`
 
   type Query {
     authors: [Author]
+    authorByName(name: String!): Author
     bookById(id: ID!): Book
-    booksByAuthor(id: ID!): [Book]
+    bookByTitle(title: String!): [Book]
+    booksByAuthorName(authorName: String!): [Book]
     me: User
   }
 
