@@ -1,16 +1,16 @@
 const { MongoDataSource } = require("apollo-datasource-mongodb");
+const { User } = require("../models");
 
-export default class UserAPI extends MongoDataSource {
+class UserAPI extends MongoDataSource {
   //Allows access to current user that is making requests
   initialize(config) {
     this.context = config.context;
   }
 
-  getUser({ userId }) {
-    return this.findOneById(userId);
+  async findOrCreateUser({ email }) {
+    const user = await this.collection.findOneById(userId);
+    return user;
   }
-
-  async findOrCreateUser({ email }) {}
 
   getBooksInUsersCollection() {}
 
@@ -18,3 +18,5 @@ export default class UserAPI extends MongoDataSource {
 
   removeBookFromUsersCollection({ bookId }) {}
 }
+
+module.exports = UserAPI;

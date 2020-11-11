@@ -58,7 +58,9 @@ class BookAPI extends RESTDataSource {
       pages: book.volumeInfo.pageCount,
       yearPublished: publishedYear,
       ISBN13: isbn13,
-      imageThumbnailLink: book.volumeInfo.imageLinks.thumbnail,
+      imageThumbnailLink: book.volumeInfo.imageLinks.thumbnail
+        ? book.volumeInfo.imageLinks.thumbnail
+        : "",
       description: book.volumeInfo.description,
     };
   }

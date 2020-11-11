@@ -33,7 +33,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    authorByName(name: String!): Author
     bookById(id: ID!): Book
     bookByTitle(title: String!): [Book]
     booksByAuthorName(authorName: String!): [Book]
